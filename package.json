@@ -1,8 +1,24 @@
 {
   "dependencies": {
+    "better-sqlite3": "^9.6.0",
+    "cors": "^2.8.5",
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "PORT=3001 node server/index.js",
+    "dev": "PORT=3001 nodemon server/index.js",
+    "postinstall": "node server/db/init.js",
+    "resetdb": "node server/db/reset.js",
+    "client": "npm --prefix frontend run build",
+    "client:dev": "npm --prefix frontend run dev",
+    "dev:all": "concurrently --kill-others-on-fail \"npm run dev\" \"npm run client:dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
     "nodemon": "^3.1.10"
   }
 }
